@@ -27,9 +27,14 @@ router.get('/topRatedMovies', function(req, res, next) {
 // 首页列表
 router.post('/movieOnInfoList', (req, res, next) => {
   axios.get('https://m.maoyan.com/ajax/movieOnInfoList?token=&optimus_uuid=8905E2E0E6A811EA8DE5DF8C66C7FB7598262DFDFCFC498CABC603180F0378A3&optimus_risk_level=71&optimus_code=10').then(data => {
+    const {movieIds, total, movieList} = data.data
     res.json({
       status: 0,
-      result: data.data
+      result: {
+        movieIds,
+        total,
+        movieList
+      }
     })
   })
 })

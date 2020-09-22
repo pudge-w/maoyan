@@ -6,6 +6,12 @@ const cheerio = require('cheerio');
 /* GET users listing. */
 router.get('/info', function (req, res, next) {
   const id = req.query.id
+  if (!id) {
+    res.json({
+      status: 1,
+      msg: '参数错误'
+    })
+  }
   axios('https://maoyan.com/films/' + id).then(data => {
     // console.log(data.data)
     const $ = cheerio.load(data.data, {decodeEntities: false});

@@ -5,23 +5,22 @@ const cheerio = require('cheerio');
 
 // 最受欢迎电影
 router.get('/topRatedMovies', function(req, res, next) {
-  axios.get('https://m.maoyan.com/ajax/topRatedMovies?token=&optimus_uuid=2F0AF070FB4611EA937E3120EC3A5451D5967A15A4924F6B9DDFD75DE8BC4F1A&optimus_risk_level=71&optimus_code=10').then(data => {
-    const $ = cheerio.load(data.data, {decodeEntities: false});
-    let arr = [];
-    $('.top-rated-item').each((index, value) => {
-      arr.push({
-        id: $(value).attr('data-id'),
-        img: $(value).find('.poster img').attr('src'),
-        score: $(value).find('.rated-score').html(),
-        wishNum: $(value).find('.wish-num').html(),
-        title: $(value).find('.line-ellipsis').html()
-      })
-    })
+  // axios.get('https://m.maoyan.com/ajax/topRatedMovies?token=&optimus_uuid=2F0AF070FB4611EA937E3120EC3A5451D5967A15A4924F6B9DDFD75DE8BC4F1A&optimus_risk_level=71&optimus_code=10').then(data => {
+  //   const $ = cheerio.load(data.data, {decodeEntities: false});
+  //   let arr = [];
+  //   $('.top-rated-item').each((index, value) => {
+  //     arr.push({
+  //       id: $(value).attr('data-id'),
+  //       img: $(value).find('.poster img').attr('src'),
+  //       score: $(value).find('.rated-score').html(),
+  //       wishNum: $(value).find('.wish-num').html(),
+  //       title: $(value).find('.line-ellipsis').html()
+  //     })
+  //   })
     res.json({
       status: 0,
-      result: arr
+      result: { "status": 0, "result": [{ "id": "346210", "img": "https://p1.meituan.net/170.230/moviemachine/a448ca6a5f4dafb88067722303ca0cfd96002.jpg", "score": "9.2", "wishNum": null, "title": "八佰" }, { "id": "1283967", "img": "https://p1.meituan.net/170.230/movie/7dc973175415282c23bb3e8b9401c15d3903238.jpg", "score": "9.2", "wishNum": null, "title": "蓝色防线" }, { "id": "1297973", "img": "https://p0.meituan.net/170.230/moviemachine/40d1e5ac176f1e9258da10a3222dbff7952117.png", "score": "8.3", "wishNum": null, "title": "信条" }, { "id": "1277457", "img": "https://p0.meituan.net/170.230/movie/374f7addeb978a634b0f5e8665f0bce4357962.jpg", "score": "8.2", "wishNum": null, "title": "麦路人" }, { "id": "1247287", "img": "https://p1.meituan.net/170.230/movie/9ce80d2aa1aec49b7f999305c237bace2082932.jpg", "score": "8.2", "wishNum": null, "title": "死无对证" }, { "id": "489894", "img": "https://p0.meituan.net/170.230/moviemachine/7e6118993dbf0f304ac1dad4667fddda207318.jpg", "score": "7.9", "wishNum": null, "title": "我在时间尽头等你" }, { "id": "1210778", "img": "https://p1.meituan.net/170.230/moviemachine/ca9d0c0268a940d73d62c004d57b957a5241814.jpg", "score": "7.5", "wishNum": null, "title": "花木兰" }, { "id": "1217123", "img": "https://p1.meituan.net/170.230/movie/988ab3d3a50f51f31d090e84da88d5ae3461853.jpg", "score": null, "wishNum": "506520", "title": "夺冠" }, { "id": "1211269", "img": "https://p0.meituan.net/170.230/moviemachine/da8024493c8142c0949f8b72d43934c0351577.jpg", "score": null, "wishNum": "1308181", "title": "姜子牙" }, { "id": "1216053", "img": "https://p0.meituan.net/170.230/movie/d1a953193e001c8dec96c17ea5075ec0788729.jpg", "score": null, "wishNum": "264724", "title": "急先锋" }, { "id": "1328712", "img": "https://p0.meituan.net/170.230/movie/202ea88abd2abf2aa1964487d61edab64556414.jpg", "score": null, "wishNum": "338796", "title": "我和我的家乡" }, { "id": "2212", "img": "https://p0.meituan.net/170.230/movie/0bd752877b95b8eac2d0704c783f372c4625354.jpg", "score": null, "wishNum": "21051", "title": "菊次郎的夏天" }]}
     })
-  })
 });
 
 // 首页列表

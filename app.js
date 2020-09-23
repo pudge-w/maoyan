@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// const formidable = require('express-formidable') // 引入
+
+
+
 var cors = require('cors')
 
 var indexRouter = require('./routes/index');
@@ -23,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use(formidable());  // 中间件
 app.use(cors())
 
 app.use('/api/home', indexRouter);

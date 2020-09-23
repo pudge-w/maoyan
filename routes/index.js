@@ -45,12 +45,18 @@ router.post('/movieOnInfoList', (req, res, next) => {
 
 // 首页加载更多
 router.post('/moreComingList', (req, res, next) => {
-  const ids = req.body.ids
-  axios.get('https://m.maoyan.com/ajax/moreComingList?token=&movieIds=' + ids + '&optimus_uuid=8905E2E0E6A811EA8DE5DF8C66C7FB7598262DFDFCFC498CABC603180F0378A3&optimus_risk_level=71&optimus_code=10').then(data => {
-    res.json({
-      status: 0,
-      result: data.data.coming
-    })
+  // const ids = req.body.ids
+  // axios.get('https://m.maoyan.com/ajax/moreComingList?token=&movieIds=' + ids + '&optimus_uuid=8905E2E0E6A811EA8DE5DF8C66C7FB7598262DFDFCFC498CABC603180F0378A3&optimus_risk_level=71&optimus_code=10').then(data => {
+  //   res.json({
+  //     status: 0,
+  //     result: data.data.coming
+  //   })
+  // })
+  res.json({
+    status: 0,
+    result: [
+      { "id": 1211269, "haspromotionTag": false, "img": "http://p0.meituan.net/w.h/moviemachine/da8024493c8142c0949f8b72d43934c0351577.jpg", "version": "v3d imax", "nm": "姜子牙", "preShow": false, "sc": 0, "globalReleased": false, "wish": 1307341, "star": "郑希,杨凝,图特哈蒙", "rt": "2020-10-01", "showInfo": "2020-10-01 下周四上映", "showst": 4, "wishst": 0 }, { "id": 1328712, "haspromotionTag": false, "img": "http://p0.meituan.net/w.h/movie/202ea88abd2abf2aa1964487d61edab64556414.jpg", "version": "v2d imax", "nm": "我和我的家乡", "preShow": false, "sc": 0, "globalReleased": false, "wish": 338087, "star": "黄渤,葛优,范伟", "rt": "2020-10-01", "showInfo": "2020-10-01 下周四上映", "showst": 4, "wishst": 0 }, { "id": 1216053, "haspromotionTag": false, "img": "http://p0.meituan.net/w.h/movie/d1a953193e001c8dec96c17ea5075ec0788729.jpg", "version": "v3d imax", "nm": "急先锋", "preShow": false, "sc": 0, "globalReleased": false, "wish": 264418, "star": "成龙,杨洋,艾伦", "rt": "2020-09-30", "showInfo": "2020-09-30 下周三上映", "showst": 4, "wishst": 0 }, { "id": 1207303, "haspromotionTag": false, "img": "http://p0.meituan.net/w.h/moviemachine/bbedacda94dde6d1e62379abc1258e9c231479.jpg", "version": "", "nm": "邻里美好的一天", "preShow": false, "sc": 8.5, "globalReleased": true, "wish": 6773, "star": "汤姆·汉克斯,马修·瑞斯,苏珊·卡莉奇·沃森", "rt": "2020-09-18", "showInfo": "今天77家影院放映126场", "showst": 3, "wishst": 0 }
+    ]
   })
 })
 
